@@ -8,10 +8,6 @@ export interface NavLinkProps {
 export default function NavLink({ category }: NavLinkProps) {
     
     return (
-        // <Link href="/">
-        //     <span>{category.icon}</span>
-        //     <span>{category.nameBn}</span>
-        // </Link>
          <Link
       href={`/category/${category.id}`}
       className="
