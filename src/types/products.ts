@@ -11,7 +11,7 @@ export default interface IProducts {
     "yesterday": number;
     "lastWeek": number;
     "lastMonth": number;
-    "change"?: {
+    "change": {
       "dir": "up" | "down" | "flat";
       "pct": number;
     },

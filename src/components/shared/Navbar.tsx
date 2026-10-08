@@ -11,7 +11,7 @@ const Navbar = async () => {
   const data: ICategory[] = await getCategories()
 
   return (
-    <header className="bg-base-100 shadow-sm">
+    <header className="bg-base-100 border-b border-base-300">
       <div className="container mx-auto px-4">
         {/* Main Navbar */}
         <div className="navbar min-h-16 px-0">
@@ -23,7 +23,7 @@ const Navbar = async () => {
                 alt="বাজার দর logo"
                 width={36}
                 height={36}
-                className="rounded-xl bg-green-700"
+                className="rounded-xl bg-green-700 p-2"
               />
 
               <div className="flex flex-col leading-tight">
@@ -57,7 +57,6 @@ const Navbar = async () => {
             className="
               flex gap-2 overflow-x-auto py-2 flex-wrap
               scrollbar-none
-     
               md:justify-start
             "
           >

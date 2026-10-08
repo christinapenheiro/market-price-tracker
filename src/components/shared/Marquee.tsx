@@ -1,8 +1,6 @@
 import MarqueeText from "react-marquee-text";
 import "react-marquee-text/dist/styles.css";
 import { getProducts } from "@/lib/productsApi";
-import { FaSortUp } from "react-icons/fa";
-import { FaSortDown } from "react-icons/fa6";
 import { TbTriangleInvertedFilled } from "react-icons/tb";
 import { IoTriangle } from "react-icons/io5";
 
@@ -18,7 +16,7 @@ const Marquee = async() => {
 
 
     return (
-      <div className="p-2 shadow">
+      <div className="p-2 shadow-base-200 bg-white shadow-lg">
         <MarqueeText duration={30} direction="right">
           {producsList.map((product: IProducts) => (
             <span key={product.id} className="flex gap-1">
@@ -50,10 +48,10 @@ const Marquee = async() => {
                         : ""
                   }
                 >
-                  {`${product.change?.pct.toLocaleString("bn-BD")}%`}
+                  {`${product.change?.pct.toLocaleString("bn-BD").replaceAll("-","")}%`}
                 </span>
               </span>
-              <span>{"|"}</span>
+              <span className="text-gray-300">{"|"}</span>
             </span>
           ))}
         </MarqueeText>
