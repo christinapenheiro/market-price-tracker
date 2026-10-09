@@ -5,10 +5,10 @@ import Image from "next/image";
 import ICategory from "@/types/category";
 import NavLink from "./NavLink";
 import { getCategories } from "@/lib/productsApi";
-
+import UserInfo from "./UserInfo";
 
 const Navbar = async () => {
-  const data: ICategory[] = await getCategories()
+  const data: ICategory[] = await getCategories();
 
   return (
     <header className="bg-base-100 border-b border-base-300">
@@ -18,18 +18,18 @@ const Navbar = async () => {
           {/* Logo + Brand */}
           <div className="navbar-start">
             <div className="flex items-center gap-2">
-              <Image
-                src="/logo-icon.png"
-                alt="বাজার দর logo"
-                width={36}
-                height={36}
-                className="rounded-xl bg-green-700 p-2"
-              />
+              <Link href="/">
+                <Image
+                  src="/logo-icon.png"
+                  alt="বাজার দর logo"
+                  width={36}
+                  height={36}
+                  className="rounded-xl bg-green-700 p-2"
+                />
+              </Link>
 
               <div className="flex flex-col leading-tight">
-                <Link href="/" className="text-lg font-bold sm:text-xl">
-                  বাজার দর
-                </Link>
+                <span className="text-lg font-bold sm:text-xl">বাজার দর</span>
 
                 <FormattedDate />
               </div>
@@ -37,18 +37,7 @@ const Navbar = async () => {
           </div>
 
           {/* Auth Buttons */}
-          <div className="navbar-end gap-2">
-            <Link href="/signin" className="btn btn-ghost  btn-sm sm:btn-md">
-              সাইন ইন
-            </Link>
-
-            <Link
-              href="/signup"
-              className="btn bg-green-700 btn-sm sm:btn-md"
-            >
-              সাইন আপ
-            </Link>
-          </div>
+          <UserInfo></UserInfo>
         </div>
 
         {/* Categories */}

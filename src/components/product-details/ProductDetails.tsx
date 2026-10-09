@@ -62,7 +62,7 @@ export default function ProductDetails({ prop }: ProductDetailsProps) {
   ];
 
   return (
-    <main className="min-h-screen bg-[#f0f5f0] px-3 py-5 sm:px-5 sm:py-7">
+    <main className="min-h-screen bg-[#f0f5f0] px-3 py-5  sm:py-7 container mx-auto">
       <div className="mx-auto max-w-7xl space-y-3">
         {/* Product header */}
         <section className="flex items-center justify-between gap-3 rounded-xl border border-[#e1e9e1] bg-white p-3 sm:p-5">

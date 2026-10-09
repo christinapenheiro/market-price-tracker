@@ -11,20 +11,47 @@ import {
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
+import { useState } from "react";
+import { SyntheticEvent } from "react";
+
 
 export default function SignUp() {
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const data: Record<string, string> = {};
+    const user = Object.fromEntries(formData.entries()) as {
+      name: string;
+      email: string;
+      password: string;
+      confirmPassword: string;
+    };
 
-    // Convert FormData to plain object
-    formData.forEach((value, key) => {
-      data[key] = value.toString();
+    const { data, error } = await authClient.signUp.email({
+      ...user,
+      callbackURL: "/",
     });
 
-    alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
+    if (data) {
+      toast.success("Successfully Created Account.");
+      redirect("/");
+    }
+
+    if (error) {
+      toast.error(error.message);
+    }
   };
+
+  const [password, setPassword] = useState("");
+
+
+  const handleGoogleSignup = async() => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+  }
 
   return (
     <div className="container mx-auto my-10">
@@ -75,6 +102,8 @@ export default function SignUp() {
             minLength={8}
             name="password"
             type="password"
+            value={password}
+            onChange={setPassword}
             validate={(value) => {
               if (value.length < 8) {
                 return "Password must be at least 8 characters";
@@ -96,17 +125,11 @@ export default function SignUp() {
           <TextField
             isRequired
             minLength={8}
-            name="password"
+            name="confirmPassword"
             type="password"
             validate={(value) => {
-              if (value.length < 8) {
-                return "Password must be at least 8 characters";
-              }
-              if (!/[A-Z]/.test(value)) {
-                return "Password must contain at least one uppercase letter";
-              }
-              if (!/[0-9]/.test(value)) {
-                return "Password must contain at least one number";
+              if (value !== password) {
+                return "Password do not match";
               }
 
               return null;
@@ -129,7 +152,7 @@ export default function SignUp() {
             <div className="divider text-sm font-semibold">অথবা</div>
           </div>
           <div className="flex gap-1 items-center text-center justify-between">
-            <button className="btn px-1.5 flex items-center justify-center text-center">
+            <button className="btn px-1.5 flex items-center justify-center text-center" onClick={handleGoogleSignup}>
               <FcGoogle />
               Google দিয়ে চালিয়ে যান
             </button>
@@ -139,7 +162,7 @@ export default function SignUp() {
             </button>
           </div>
           <Link className="text-md text-center" href="/sign-in">
-            অ্যাকাউন্ট আছে? <span className="text-green-600">সাইন ইন করুন</span>
+            অ্যাকাউন্ট আছে? <Link href="/sign-in" className="text-green-600">সাইন ইন করুন</Link>
           </Link>
         </Form>
         <Link href="/">← হোম পেজে ফিরে যান</Link>

@@ -11,20 +11,40 @@ import {
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
+import { SyntheticEvent } from "react";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
 
 export default function SignIn() {
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const data: Record<string, string> = {};
+    const user = Object.fromEntries(formData.entries()) as {
+      email: string;
+      password: string;
+    };
 
-    // Convert FormData to plain object
-    formData.forEach((value, key) => {
-      data[key] = value.toString();
+    const { data, error } = await authClient.signIn.email({
+      ...user,
+      callbackURL: "/",
     });
 
-    alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
+    if (data) {
+      toast.success("Successfully logged in.");
+      redirect("/");
+    }
+
+    if (error) {
+      toast.error(error.message);
+    }
   };
+
+  const handleGoogleSignup = async() => {
+      const data = await authClient.signIn.social({
+        provider: "google",
+      });
+    }
 
   return (
     <div className="container mx-auto my-10">
@@ -92,7 +112,7 @@ export default function SignIn() {
             <div className="divider text-sm font-semibold">অথবা</div>
           </div>
           <div className="flex gap-1 items-center text-center justify-between">
-            <button className="btn px-1.5 flex items-center justify-center text-center">
+            <button className="btn px-1.5 flex items-center justify-center text-center" onClick={handleGoogleSignup}>
               <FcGoogle />
               Google দিয়ে চালিয়ে যান
             </button>
@@ -101,9 +121,11 @@ export default function SignIn() {
               GitHub দিয়ে চালিয়ে যান
             </button>
           </div>
-          <Link className="text-md text-center" href="/sign-in">
+          <Link className="text-md text-center" href="/sign-up">
             অ্যাকাউন্ট নেই?{" "}
-            <span className="text-green-600">সাইন আপ করুন</span>
+            <span className="text-green-600">
+              সাইন আপ করুন
+            </span>
           </Link>
         </Form>
         <Link href="/">← হোম পেজে ফিরে যান</Link>
