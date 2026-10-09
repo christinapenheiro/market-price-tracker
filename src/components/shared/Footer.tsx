@@ -1,0 +1,16 @@
+import React from 'react';
+
+const Footer = () => {
+    return (
+      <div className='bg-white shadow-lg mt-10'>
+        <div className="flex flex-col sm:flex-row items-center justify-between container mx-auto py-4 text-center">
+          <span>বাজার দর — প্রয়োজনীয় পণ্যের দাম এক নজরে।</span>
+          <span>
+            সকল দাম সম্ভাব্য; বাজার অবস্থার ওপর নির্ভর করে পরিবর্তিত হয়।
+          </span>
+        </div>
+      </div>
+    );
+};
+
+export default Footer;
