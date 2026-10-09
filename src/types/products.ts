@@ -15,7 +15,7 @@ export default interface IProducts {
       "dir": "up" | "down" | "flat";
       "pct": number;
     },
-    "markets"?: [
+    "markets": [
       {
         "market": string;
         "division": string;
