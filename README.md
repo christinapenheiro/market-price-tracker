@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 বাজার দর (BazarDor)
 
-## Getting Started
+A responsive, real-time daily market price tracking platform designed to keep consumers informed about commodity prices across various markets in Bangladesh. **BazarDor** provides clear visual insights into daily price changes, price fluctuations, risers and fallers, and detailed market analyses.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Key Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Live Price Ticker & Market Insights:**
+   - Features an infinite-scrolling marquee (ticker) right below the navigation bar displaying real-time updates for key commodities with unit prices, market trends, and Bengali indicator badges (`▲` green for increase, `▼` red for decrease).
+   - Dedicated dashboard sections displaying **"আজ দাম বেড়েছে ▲"** (Top Risers) and **"আজ দাম কমেছে ▼"** (Top Fallers).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. **Categorized Product Browsing & Dynamic Sorting:**
+   - Browse daily commodities filtered by categories (e.g., Rice, Vegetables, Fish, Spices) with responsive dynamic routing.
+   - Smart sorting controls (`ডিফল্ট`, `দাম: কম থেকে বেশি`, `দাম: বেশি থেকে কম`) accurately handling Bengali numeric values.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. **Detailed Market Analytics (Protected Route):**
+   - In-depth product analysis page displaying min, max, and average prices alongside localized price breakdowns across various local bazaars.
+   - Protected route accessible exclusively to authenticated users.
 
-## Learn More
+4. **Robust Authentication System:**
+   - Secure authentication system powered by **BetterAuth** supporting Email/Password logins and OAuth Social Logins (Google / GitHub).
+   - Instant toast feedback notifications upon sign-in, sign-up, sign-out, or access restrictions.
 
-To learn more about Next.js, take a look at the following resources:
+5. **Profile Management & Live Updates:**
+   - Dedicated user profile dashboard allowing registered users to seamlessly view and update their account information with immediate persistence.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠️ Technologies Used
 
-## Deploy on Vercel
+- **Framework:** Next.js (App Router)
+- **Language:** JavaScript / TypeScript
+- **Styling:** Tailwind CSS, DaisyUI / HeroUI
+- **Authentication:** BetterAuth (Email/Password, Google & GitHub OAuth)
+- **Notifications:** React Hot Toast
+- **Deployment:** Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ⚙️ API Reference
+
+**Base URLs:**
+- Primary API: `https://api.api-store.workers.dev/api/bazardor`
+- Backup API: `https://api.abcz.workers.dev/api/bazardor`
+
+**Endpoints:**
+| Route | Method | Description |
+| :--- | :--- | :--- |
+| `/products` | `GET` | Fetch all products |
+| `/products?category={slug}` | `GET` | Filter products by category |
+| `/products/{id}` | `GET` | Fetch single product details |
+| `/categories` | `GET` | Fetch all commodity categories |
+| `/categories/{slug}` | `GET` | Fetch specific category details |
+
+---
+
+## 💻 Getting Started
+
+### Prerequisites
+- Node.js (v18.x or later recommended)
+- npm / yarn / pnpm
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/bazardor.git
+   cd bazardor
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Set up Environment Variables:**
+   Create a `.env.local` file in the root directory and add your authentication credentials:
+   ```env
+   BETTER_AUTH_SECRET=your_auth_secret
+   BETTER_AUTH_URL=http://localhost:3000
+   GOOGLE_CLIENT_ID=your_google_client_id
+   GOOGLE_CLIENT_SECRET=your_google_client_secret
+   GITHUB_CLIENT_ID=your_github_client_id
+   GITHUB_CLIENT_SECRET=your_github_client_secret
+   ```
+
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+
+---
+
+## 🌐 Live Demo & Repository
+
+- **Live Site:** https://market-price-tracker-two.vercel.app/
+- **GitHub Repository:** https://github.com/christinapenheiro/market-price-tracker
+
+---
+
+## 📝 License
+
+This project is open-source and available under the [MIT License](LICENSE).
