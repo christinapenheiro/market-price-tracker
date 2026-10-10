@@ -49,7 +49,7 @@ const UserInfo = () => {
                 <span className="font-bold">{user.name}</span>
                 <span>{user.email}</span>
                 <li>
-                  <Link href="/my-profile">👤 আমার প্রোফাইল</Link>
+                  <Link href="/my-profile" prefetch={false}>👤 আমার প্রোফাইল</Link>
                 </li>
                 <li onClick={handleSignout}>
                   <Link href="/">↩ সাইন আউট</Link>

@@ -33,7 +33,7 @@ export default function ProductCard({ prop }: ProductCardProps) {
       //     </div>
       //   </div>
       <div className="flex flex-col justify-between gap-4 rounded-lg border border-gray-200 bg-white px-4 py-3 shadow-sm">
-        <Link href={`/product-details/${prop.id}`}>
+        <Link href={`/product-details/${prop.id}`} prefetch={false}>
           {/* Product info */}
           <div className="flex min-w-0 items-center gap-3">
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-gray-100">

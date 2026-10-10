@@ -16,8 +16,10 @@ import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
 import { useState } from "react";
 import { SyntheticEvent } from "react";
+import { useRouter } from "next/navigation";
 
 export default function SignUp() {
+  const router = useRouter();
   const onSubmit = async (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -35,7 +37,8 @@ export default function SignUp() {
 
     if (data) {
       toast.success("Successfully Created Account.");
-      redirect("/");
+      router.replace("/");
+      router.refresh();
     }
 
     if (error) {
