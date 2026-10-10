@@ -7,7 +7,7 @@ const AllProducts = async () => {
   const allProducts: IProducts[] = await getProducts()
 
   return (
-    <div id="all-product" className="container px-4 mx-auto md:px-0 mt-7">
+    <div id="all-product" className="max-w-7xl px-4 mx-auto mt-7">
       <h3 className="flex text-xl font-bold mb-4 gap-2">সব পণ্য</h3>
       <p className="mb-4">
         মোট {allProducts.length.toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে

@@ -13,7 +13,7 @@ const Navbar = async () => {
 
   return (
     <header className="bg-base-100 border-b border-base-300">
-      <div className="container mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4">
         {/* Main Navbar */}
         <div className="navbar min-h-16 px-0">
           {/* Logo + Brand */}

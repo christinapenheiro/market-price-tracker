@@ -11,7 +11,7 @@ const IncreasePrice = async () => {
     .sort((a: IProducts, b: IProducts) => b.change.pct - a.change.pct);
 
   return (
-    <div className="container px-4 mx-auto md:px-0">
+    <div className="max-w-7xl px-4 mx-auto ">
       <h3 className="flex text-xl font-bold mb-4 gap-2">
         <IoTriangle className="text-red-600" />
         আজ দাম বেড়েছে

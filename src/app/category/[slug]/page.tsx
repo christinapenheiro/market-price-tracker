@@ -38,7 +38,7 @@ if(data.length === 0){
 
 
   return (
-    <div className="space-y-5 px-4 md:px-0 container mx-auto mt-10">
+    <div className="space-y-5 px-4 max-w-7xl mx-auto mt-10">
       <ProductList prop={data}></ProductList>
     </div>
   );

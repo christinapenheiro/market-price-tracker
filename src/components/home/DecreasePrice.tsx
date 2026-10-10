@@ -10,7 +10,7 @@ const DecreasePrice = async() => {
 
 
     return (
-      <div className="container px-4 mx-auto md:px-0 mt-7">
+      <div className="max-w-7xl px-4 mx-auto mt-7">
         <h3 className="flex text-xl font-bold mb-4 gap-2">
           <TbTriangleInvertedFilled className="text-green-600" />
           আজ দাম কমেছে
