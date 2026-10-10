@@ -1,7 +1,8 @@
 import ProductList from "@/components/category/ProductList";
-import SortingButton from "@/components/category/SortinfButton";
-import ProductCard from "@/components/home/ProductCard";
 import IProducts from "@/types/products";
+import { notFound } from "next/navigation";
+
+
 
 
 const Category = async ({ params }: { params: Promise<{ slug: string }> }) => {
@@ -11,16 +12,33 @@ const Category = async ({ params }: { params: Promise<{ slug: string }> }) => {
       next: { revalidate: 60 }
     }
   );
+  if (!categories.ok){
+    notFound()
+  }
+
+  // const dataSet = categories.find(
+  //   (data: IProducts) => String(data.category) === String(slug),
+  // );
+
+  // if (!dataSet) {
+  //   notFound();
+  // }
+ 
+
   const data:IProducts[] = await categories.json();
 //   const category = data.filter(
 //     (product: IProducts) => product.category === String(slug),
 //   );
+if(data.length === 0){
+  notFound()
+}
+
+
+
 
   return (
-
-    <div className="space-y-5 container mx-auto mt-10">
-    
-    <ProductList prop={data}></ProductList>
+    <div className="space-y-5 px-4 md:px-0 container mx-auto mt-10">
+      <ProductList prop={data}></ProductList>
     </div>
   );
 };

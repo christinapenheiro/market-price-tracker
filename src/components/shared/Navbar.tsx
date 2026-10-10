@@ -24,12 +24,12 @@ const Navbar = async () => {
                   alt="বাজার দর logo"
                   width={36}
                   height={36}
-                  className="rounded-xl bg-green-700 p-2"
+                  className="rounded md:rounded-xl bg-green-700 p-2"
                 />
               </Link>
 
               <div className="flex flex-col leading-tight">
-                <span className="text-lg font-bold sm:text-xl">বাজার দর</span>
+                <span className="text-sm font-bold sm:text-xl">বাজার দর</span>
 
                 <FormattedDate />
               </div>
@@ -43,8 +43,7 @@ const Navbar = async () => {
         {/* Categories */}
         <nav className="border-base-300">
           <div
-            className="
-              flex gap-2 overflow-x-auto py-2 flex-wrap
+            className="grid grid-cols-4 md:grid-cols-none md:flex gap-0 md:gap-2 overflow-x-auto py-2 
               scrollbar-none
               md:justify-start
             "

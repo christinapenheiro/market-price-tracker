@@ -17,7 +17,6 @@ import { redirect } from "next/navigation";
 import { useState } from "react";
 import { SyntheticEvent } from "react";
 
-
 export default function SignUp() {
   const onSubmit = async (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -46,12 +45,17 @@ export default function SignUp() {
 
   const [password, setPassword] = useState("");
 
-
-  const handleGoogleSignup = async() => {
+  const handleGoogleSignup = async () => {
     const data = await authClient.signIn.social({
       provider: "google",
     });
-  }
+  };
+
+  const handleGithubSignup = async () => {
+    const data = await authClient.signIn.social({
+      provider: "github",
+    });
+  };
 
   return (
     <div className="container mx-auto my-10">
@@ -63,7 +67,7 @@ export default function SignUp() {
       </div>
       <div className="flex flex-col items-center justify-center ">
         <Form
-          className="flex w-96 flex-col gap-4 bg-white rounded-md m-4 p-5 "
+          className="flex sm:w-96 flex-col gap-4 bg-white rounded-md m-4 p-5"
           onSubmit={onSubmit}
         >
           <TextField
@@ -140,7 +144,7 @@ export default function SignUp() {
             <FieldError />
           </TextField>
 
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-2 items-center justify-center text-center">
             <Button
               type="submit"
               className="rounded w-full bg-green-700 text-center"
@@ -151,18 +155,27 @@ export default function SignUp() {
           <div className="flex w-full flex-col">
             <div className="divider text-sm font-semibold">অথবা</div>
           </div>
-          <div className="flex gap-1 items-center text-center justify-between">
-            <button className="btn px-1.5 flex items-center justify-center text-center" onClick={handleGoogleSignup}>
+          <div className="grid grid-cols-1 lg:grid-cols-none lg:flex gap-1 items-center text-center justify-between">
+            <button
+              className="btn px-1.5 flex items-center justify-center text-center"
+              onClick={handleGoogleSignup}
+            >
               <FcGoogle />
               Google দিয়ে চালিয়ে যান
             </button>
-            <button className="btn px-1.5 flex items-center justify-center text-center">
+            <button
+              className="btn px-1.5 flex items-center justify-center text-center"
+              onClick={handleGithubSignup}
+            >
               <FaGithub />
               GitHub দিয়ে চালিয়ে যান
             </button>
           </div>
           <Link className="text-md text-center" href="/sign-in">
-            অ্যাকাউন্ট আছে? <Link href="/sign-in" className="text-green-600">সাইন ইন করুন</Link>
+            অ্যাকাউন্ট আছে?{" "}
+            <span className="text-green-600">
+              সাইন ইন করুন
+            </span>
           </Link>
         </Form>
         <Link href="/">← হোম পেজে ফিরে যান</Link>

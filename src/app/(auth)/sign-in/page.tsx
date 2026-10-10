@@ -46,6 +46,12 @@ export default function SignIn() {
       });
     }
 
+    const handleGithubSignup = async() => {
+      const data = await authClient.signIn.social({
+        provider: "github",
+      });
+    }
+
   return (
     <div className="container mx-auto my-10">
       <div className="text-center">
@@ -56,7 +62,7 @@ export default function SignIn() {
       </div>
       <div className="flex flex-col items-center justify-center ">
         <Form
-          className="flex w-96 flex-col gap-4 bg-white rounded-md m-4 p-5 "
+          className="flex sm:w-96 flex-col gap-4 bg-white rounded-md m-4 p-5"
           onSubmit={onSubmit}
         >
           <TextField
@@ -100,10 +106,10 @@ export default function SignIn() {
             <FieldError />
           </TextField>
 
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-2 items-center justify-center text-center">
             <Button
               type="submit"
-              className="rounded w-full bg-green-700 text-center"
+              className="rounded  w-full bg-green-700 text-center"
             >
               সাইন ইন
             </Button>
@@ -111,21 +117,24 @@ export default function SignIn() {
           <div className="flex w-full flex-col">
             <div className="divider text-sm font-semibold">অথবা</div>
           </div>
-          <div className="flex gap-1 items-center text-center justify-between">
-            <button className="btn px-1.5 flex items-center justify-center text-center" onClick={handleGoogleSignup}>
+          <div className="grid grid-cols-1 lg:grid-cols-none lg:flex gap-1 items-center text-center justify-between">
+            <button
+              className="btn px-1.5 flex items-center justify-center text-center"
+              onClick={handleGoogleSignup}
+            >
               <FcGoogle />
               Google দিয়ে চালিয়ে যান
             </button>
-            <button className="btn px-1.5 flex items-center justify-center text-center">
+            <button
+              className="btn px-1.5 flex items-center justify-center text-center"
+              onClick={handleGithubSignup}
+            >
               <FaGithub />
               GitHub দিয়ে চালিয়ে যান
             </button>
           </div>
           <Link className="text-md text-center" href="/sign-up">
-            অ্যাকাউন্ট নেই?{" "}
-            <span className="text-green-600">
-              সাইন আপ করুন
-            </span>
+            অ্যাকাউন্ট নেই? <span className="text-green-600">সাইন আপ করুন</span>
           </Link>
         </Form>
         <Link href="/">← হোম পেজে ফিরে যান</Link>

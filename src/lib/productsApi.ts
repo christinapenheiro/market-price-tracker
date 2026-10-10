@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 export async function getCategories() {
   const res = await fetch(
     "https://api.api-store.workers.dev/api/bazardor/categories",
@@ -6,7 +8,7 @@ export async function getCategories() {
     },
   );
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    notFound();
   }
   return res.json();
 };
@@ -21,7 +23,7 @@ export async function getProducts() {
     },
   );
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    notFound()
   }
   return res.json();
 };

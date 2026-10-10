@@ -10,13 +10,13 @@ const formatPrice = (price: number) =>
   }).format(price);
 
 export default function ProductDetails({ prop }: ProductDetailsProps) {
-  const averagePrice =
-    prop.markets && prop.markets.length > 0
-      ? prop.markets.reduce(
-          (total, market) => total + (market.min + market.max) / 2,
-          0,
-        ) / prop.markets.length
-      : prop.today;
+  // const averagePrice =
+  //   prop.markets && prop.markets.length > 0
+  //     ? prop.markets.reduce(
+  //         (total, market) => total + (market.min + market.max) / 2,
+  //         0,
+  //       ) / prop.markets.length
+  //     : prop.today;
 
   const lowestMarketPrice = prop.markets?.reduce((prev, curr) =>
     prev.min < curr.min ? prev : curr,
