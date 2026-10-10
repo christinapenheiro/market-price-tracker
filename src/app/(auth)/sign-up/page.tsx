@@ -159,6 +159,7 @@ export default function SignUp() {
             <button
               className="btn px-1.5 flex items-center justify-center text-center"
               onClick={handleGoogleSignup}
+              type="button"
             >
               <FcGoogle />
               Google দিয়ে চালিয়ে যান
@@ -166,6 +167,7 @@ export default function SignUp() {
             <button
               className="btn px-1.5 flex items-center justify-center text-center"
               onClick={handleGithubSignup}
+              type="button"
             >
               <FaGithub />
               GitHub দিয়ে চালিয়ে যান

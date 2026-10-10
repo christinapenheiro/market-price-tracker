@@ -8,9 +8,10 @@ import { notFound } from "next/navigation";
 const Category = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
   const categories = await fetch(
-    `https://api.abcz.workers.dev/api/bazardor/products?category=${encodeURIComponent(slug)}`,{
-      next: { revalidate: 60 }
-    }
+    `https://openapi.programming-hero.com/api/bazardor/products?category=${encodeURIComponent(slug)}`,
+    {
+      next: { revalidate: 60 },
+    },
   );
   if (!categories.ok){
     notFound()

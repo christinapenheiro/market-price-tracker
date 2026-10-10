@@ -13,7 +13,7 @@ export default function NotFound() {
 
       <Link
         href="/"
-        className="mt-6 rounded-full text-white bg-green-600 px-5 py-2 text-sm font-semibold text-black"
+        className="mt-6 rounded-full text-white bg-green-600 px-5 py-2 text-sm font-semibold"
       >
         হোম পেজে ফিরে যান
       </Link>

@@ -6,10 +6,11 @@ import { notFound } from "next/navigation";
 const ProductsInfo = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
    const products = await fetch(
-      `https://api.abcz.workers.dev/api/bazardor/products/${encodeURIComponent(id)}`,{
-        next: { revalidate: 60 }
-      }
-    );
+     `https://openapi.programming-hero.com/api/bazardor/products/${encodeURIComponent(id)}`,
+     {
+       next: { revalidate: 60 },
+     },
+   );
     if (!products.ok) {
       notFound()
     }
