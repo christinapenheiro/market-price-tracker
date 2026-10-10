@@ -41,7 +41,7 @@ export default function ProfilePage() {
         {/* প্রোফাইল কার্ড সেকশন */}
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <div className="relative w-16 h-16 rounded-xl overflow-hidden bg-gray-100 shrink">
+            <div className="relative w-12  h-12 rounded-xl overflow-hidden bg-gray-100 shrink">
               {/* <Image
                 src={user?.image}
                 alt="Rezwan Ahmed"
