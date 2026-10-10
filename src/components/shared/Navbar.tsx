@@ -51,9 +51,11 @@ const Navbar = async () => {
               md:justify-start
             "
           >
-            {data?.map((category: ICategory) => (
-              <NavLink key={category.id} category={category} />
-            ))}
+            <Suspense fallback={null}>
+              {data?.map((category: ICategory) => (
+                <NavLink key={category.id} category={category} />
+              ))}
+            </Suspense>
           </div>
         </nav>
       </div>

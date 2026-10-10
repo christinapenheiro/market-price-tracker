@@ -17,7 +17,7 @@ const Marquee = async() => {
 
     return (
       <div className="p-2 shadow-base-200 bg-white shadow-lg">
-        <MarqueeText duration={30} direction="right">
+        <MarqueeText duration={15} direction="right">
           {producsList.map((product: IProducts) => (
             <span key={product.id} className="flex gap-1">
               <span>{product.categoryIcon}</span>
