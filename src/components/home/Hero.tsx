@@ -1,6 +1,4 @@
-import React from "react";
 import { FormattedDate } from "../shared/FormateDate";
-import Link from "next/link";
 import Image from "next/image";
 import HeroButton from "./HeroButton";
 

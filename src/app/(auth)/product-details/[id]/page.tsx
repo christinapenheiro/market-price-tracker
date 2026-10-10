@@ -1,7 +1,4 @@
-import ProductList from "@/components/category/ProductList";
-import ProductCard from "@/components/home/ProductCard";
 import ProductDetails from "@/components/product-details/ProductDetails";
-import { getProducts } from "@/lib/productsApi";
 import IProducts from "@/types/products";
 import { notFound } from "next/navigation";
 
@@ -21,9 +18,6 @@ const ProductsInfo = async ({ params }: { params: Promise<{ id: string }> }) => 
     // if (data.length === 0) {
     //   notFound();
     // }
-
-
-
 
   return (
     <div>

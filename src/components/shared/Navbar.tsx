@@ -6,6 +6,7 @@ import ICategory from "@/types/category";
 import NavLink from "./NavLink";
 import { getCategories } from "@/lib/productsApi";
 import UserInfo from "./UserInfo";
+import { Suspense } from "react";
 
 const Navbar = async () => {
   const data: ICategory[] = await getCategories();
@@ -37,7 +38,9 @@ const Navbar = async () => {
           </div>
 
           {/* Auth Buttons */}
-          <UserInfo></UserInfo>
+          <Suspense fallback={null}>
+            <UserInfo />
+          </Suspense>
         </div>
 
         {/* Categories */}
