@@ -22,8 +22,8 @@ const UserInfo = () => {
     return (
       <div className="navbar-end gap-2">
         {user ? (
-          <div>
-            <div className="avatar avatar-placeholder">
+          <div className='sm:flex'>
+            <div className="hidden sm:flex avatar avatar-placeholder">
               <div className="bg-neutral text-neutral-content w-8 rounded-full text-sm">
                 {user.image ? (
                   <Image
